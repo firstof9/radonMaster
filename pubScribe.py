@@ -194,7 +194,7 @@ def ha_discovery(serial: str = "00000000"):
     for sensor in MQTT_SENSORS:
         topic = f"homeassistant/sensor/RadonMaster/{sensor}/config"
         mqtt_data["unique_id"] = f"radonmaster-{serial}-{sensor}"
-        mqtt_data["object_id"] = f"radonmaster_{sensor}"
+        mqtt_data["default_entity_id"] = f"radonmaster_{sensor}"
         mqtt_data["name"] = MQTT_SENSORS[sensor]["name"]
         mqtt_data["device_class"] = MQTT_SENSORS[sensor]["device_class"]
         mqtt_data["unit_of_measurement"] = MQTT_SENSORS[sensor]["unit_of_measurement"]
@@ -213,7 +213,7 @@ def ha_discovery(serial: str = "00000000"):
         for sensor in AIRTHINGS_SENSORS:
             topic = f"homeassistant/sensor/RadonMaster/{sensor}/config"
             mqtt_data["unique_id"] = f"radonmaster-{serial}-{sensor}"
-            mqtt_data["object_id"] = f"radonmaster_{sensor}"
+            mqtt_data["default_entity_id"] = f"radonmaster_{sensor}"
             mqtt_data["name"] = AIRTHINGS_SENSORS[sensor]["name"]
             mqtt_data["device_class"] = AIRTHINGS_SENSORS[sensor]["device_class"]
             mqtt_data["unit_of_measurement"] = AIRTHINGS_SENSORS[sensor][
@@ -443,3 +443,4 @@ if __name__ == "__main__":
         time.sleep(60)
 
     disconnectPubScribe()
+
